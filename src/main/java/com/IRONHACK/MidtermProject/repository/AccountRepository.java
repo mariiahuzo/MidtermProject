@@ -1,10 +1,10 @@
 package com.IRONHACK.MidtermProject.repository;
 
-import com.IRONHACK.MidtermProject.model.Checking;
+import com.IRONHACK.MidtermProject.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CheckingRepository extends JpaRepository<Checking, Long> {
+public interface AccountRepository extends JpaRepository<Account, Long> {
 
 }
