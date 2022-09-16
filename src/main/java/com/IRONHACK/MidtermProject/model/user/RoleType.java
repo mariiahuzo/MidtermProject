@@ -1,4 +1,4 @@
-package com.IRONHACK.MidtermProject.model;
+package com.IRONHACK.MidtermProject.model.user;
 
 
 public enum RoleType {

@@ -1,6 +1,6 @@
 package com.IRONHACK.MidtermProject.repository;
 
-import com.IRONHACK.MidtermProject.model.Account;
+import com.IRONHACK.MidtermProject.model.account.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

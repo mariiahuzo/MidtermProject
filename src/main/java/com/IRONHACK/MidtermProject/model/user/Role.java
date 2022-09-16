@@ -1,4 +1,4 @@
-package com.IRONHACK.MidtermProject.model;
+package com.IRONHACK.MidtermProject.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,18 +7,20 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
-@Table
 @Getter
 @Setter
-@NoArgsConstructor
+@Entity
 @AllArgsConstructor
-public class PrimaryAddress {
+@NoArgsConstructor
+@Table(name = "roles")
+public class Role {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "primaryAddress")
-    private User user;
+
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
 
 }
+
