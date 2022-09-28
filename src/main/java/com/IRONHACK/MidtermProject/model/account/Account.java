@@ -2,13 +2,9 @@ package com.IRONHACK.MidtermProject.model.account;
 
 import com.IRONHACK.MidtermProject.model.AccountStatus;
 import com.IRONHACK.MidtermProject.model.user.AccountHolder;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
-import org.javamoney.moneta.Money;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -25,6 +21,7 @@ import java.time.Instant;
         discriminatorType = DiscriminatorType.STRING
 )
 @Embeddable
+@SuperBuilder(toBuilder = true)
 public class Account {
     @Id
     @Column(name = "id", nullable = false)
@@ -32,12 +29,15 @@ public class Account {
     private Long id;
 
     @Column(name = "amount")
+    @Embedded
     private Money balance;
 
     @Enumerated(EnumType.STRING)
-    private AccountStatus status;
+    @Builder.Default
+    private AccountStatus status = AccountStatus.CREATED;
 
     @Column(precision = 2, scale = 2)
+    @Builder.Default
     private BigDecimal penaltyFee = BigDecimal.valueOf(40.00);
 
     @ManyToOne
@@ -45,6 +45,6 @@ public class Account {
     private AccountHolder accountHolder;
 
     @CreationTimestamp
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
 }
